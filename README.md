@@ -28,7 +28,7 @@
 | category_id         | integer    | null: false                    |
 | condition_id        | integer    | null: false                    |
 | pay_for_shipping_id | integer    | null: false                    |
-| shipping_area_id    | integer    | null: false                    |
+| ken_name_id         | integer    | null: false                    |
 | shipping_days_id    | integer    | null: false                    |
 | price               | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
@@ -58,7 +58,6 @@
 | ------------- | ---------- | ------------------------------ |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
-| shipping_info | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -71,10 +70,10 @@
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | zip             | string     | null: false                    |
-| ken_name        | string     | null: false                    |
+| ken_name_id     | integer    | null: false                    |
 | city_name       | string     | null: false                    |
 | address         | string     | null: false                    |
-| building        | string     | null: true                     |
+| building        | string     |                                |
 | tel             | string     | null: false                    |
 | purchase_record | references | null: false, foreign_key: true |
 
