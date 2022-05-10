@@ -17,21 +17,21 @@
 
 - has_many :items
 - has_many :comments
-- has_one  :purchase_record
+- has_many :purchase_records
 
 ## items テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| product_name     | string     | null: false                    |
-| description      | text       | null: false                    |
-| category         | string     | null: false                    |
-| condition        | string     | null: false                    |
-| pay_for_shipping | string     | null: false                    |
-| shipping_area    | string     | null: false                    |
-| shipping_days    | string     | null: false                    |
-| price            | integer    | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| product_name        | string     | null: false                    |
+| description         | text       | null: false                    |
+| category_id         | integer    | null: false                    |
+| condition_id        | integer    | null: false                    |
+| pay_for_shipping_id | integer    | null: false                    |
+| shipping_area_id    | integer    | null: false                    |
+| shipping_days_id    | integer    | null: false                    |
+| price               | integer    | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -56,19 +56,28 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| card_number   | string     | null: false                    |
-| expiration    | date       | null: false                    |
-| security_code | integer    | null: false                    |
-| zip           | string     | null: false                    |
-| ken_name      | string     | null: false                    |
-| city_name     | string     | null: false                    |
-| address       | string     | null: false                    |
-| building      | string     | null: true                     |
-| tel           | integer    | null: false                    |
 | user          | references | null: false, foreign_key: true |
 | item          | references | null: false, foreign_key: true |
+| shipping_info | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one    :shipping_info
+
+## shipping_info テーブル
+
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| zip             | string     | null: false                    |
+| ken_name        | string     | null: false                    |
+| city_name       | string     | null: false                    |
+| address         | string     | null: false                    |
+| building        | string     | null: true                     |
+| tel             | string     | null: false                    |
+| purchase_record | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :purchase_record
