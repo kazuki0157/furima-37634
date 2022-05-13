@@ -9,8 +9,6 @@ RSpec.describe User, type: :model do
     context '新規登録できるとき' do
         it "全ての項目が入力されていれば登録できる" do
           expect(@user).to be_valid
-          @user.valid?
-          binding.pry
         end  
     end
 
