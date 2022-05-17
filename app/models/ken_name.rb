@@ -1,4 +1,4 @@
-class Ken_name < ActiveHash::Base
+class KenName < ActiveHash::Base
   self.data = [
     { id: 0, name: '---' },
     { id: 1, name: '北海道' },
