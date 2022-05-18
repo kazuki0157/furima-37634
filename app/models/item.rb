@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :pay_for_shipping_id, numericality: { other_than: 0, message: "can't be blank" }
   validates :ken_name_id, numericality: { other_than: 0, message: "can't be blank" }
   validates :shipping_days_id, numericality: { other_than: 0, message: "can't be blank" }
-  validates :price, numericality: { greater_than: 299, less_than: 10_000_000 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 
   has_one_attached :image
   belongs_to :user
