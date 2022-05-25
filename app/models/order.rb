@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
-  validates :zip, presence: true
-  validates :ken_name_id, presence: true
-  validates :city_name, presence: true
-  validates :address, presence: true
-  validates :tel, presence: true
+  belongs_to :user
+  belongs_to :item
+  has_one    :shipping_info
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :ken_name
 end
