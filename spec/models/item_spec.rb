@@ -8,7 +8,6 @@ RSpec.describe Item, type: :model do
   describe '商品出品' do
     context '出品できるとき' do
       it '全ての項目が入力されていれば出品できる' do
-        binding.pry
         expect(@item).to be_valid
       end
     end

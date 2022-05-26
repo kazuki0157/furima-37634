@@ -72,7 +72,13 @@ RSpec.describe OrderShippingInfo, type: :model do
       it 'telが9桁以下では登録できないこと' do
         @order_shipping_info.tel = '000000000'
         @order_shipping_info.valid?
-        expect(@order_shipping_info.errors.full_messages).to include('Tel number is too short')
+        expect(@order_shipping_info.errors.full_messages).to include('Tel is invalid')
+      end
+
+      it 'telが12桁以上では登録できないこと' do
+        @order_shipping_info.tel = '000000000000'
+        @order_shipping_info.valid?
+        expect(@order_shipping_info.errors.full_messages).to include('Tel is invalid')
       end
 
       it 'userが紐付いていないと保存できないこと' do

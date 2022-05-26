@@ -8,7 +8,7 @@ class OrderShippingInfo
     validates :ken_name_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city_name
     validates :address
-    validates :tel, { numericality: { only_integer: true }, format: { with: /\A\d{10,11}\z/, message: 'number is too short' } }
+    validates :tel, { numericality: { only_integer: true }, format: { with: /\A\d{10,11}\z/ } }
     validates :user_id
     validates :item_id
   end
