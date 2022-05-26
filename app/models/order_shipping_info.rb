@@ -14,7 +14,7 @@ class OrderShippingInfo
   end
 
   def save
-    order = Order.create(user_id: user_id, item_id: user_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     ShippingInfo.create(zip: zip, ken_name_id: ken_name_id, city_name: city_name, address: address, building: building, tel: tel, order_id: order.id)
   end
 end
