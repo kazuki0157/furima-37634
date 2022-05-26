@@ -16,12 +16,12 @@ RSpec.describe OrderShippingInfo, type: :model do
 
       it 'buildingは空でも保存できること' do
         @order_shipping_info.building = ''
-        expect(@order_shipping_info).to be_valid        
+        expect(@order_shipping_info).to be_valid
       end
     end
 
     context '内容に問題がある場合' do
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_shipping_info.token = nil
         @order_shipping_info.valid?
         expect(@order_shipping_info.errors.full_messages).to include("Token can't be blank")
@@ -62,17 +62,17 @@ RSpec.describe OrderShippingInfo, type: :model do
         @order_shipping_info.valid?
         expect(@order_shipping_info.errors.full_messages).to include("Tel can't be blank")
       end
- 
+
       it 'telに半角数字以外が含まれる場合登録できないこと' do
         @order_shipping_info.tel = '００００００００００'
         @order_shipping_info.valid?
-        expect(@order_shipping_info.errors.full_messages).to include("Tel is not a number")
+        expect(@order_shipping_info.errors.full_messages).to include('Tel is not a number')
       end
 
       it 'telが9桁以下では登録できないこと' do
         @order_shipping_info.tel = '000000000'
         @order_shipping_info.valid?
-        expect(@order_shipping_info.errors.full_messages).to include("Tel number is too short")
+        expect(@order_shipping_info.errors.full_messages).to include('Tel number is too short')
       end
 
       it 'userが紐付いていないと保存できないこと' do
@@ -86,7 +86,6 @@ RSpec.describe OrderShippingInfo, type: :model do
         @order_shipping_info.valid?
         expect(@order_shipping_info.errors.full_messages).to include("Item can't be blank")
       end
-
     end
   end
 end
