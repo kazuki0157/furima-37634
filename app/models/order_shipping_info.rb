@@ -3,14 +3,14 @@ class OrderShippingInfo
   attr_accessor :zip, :ken_name_id, :city_name, :address, :building, :tel, :user_id, :item_id, :price, :token
 
   with_options presence: true do
-    validates :zip, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
+    validates :token
+    validates :zip, format: { with: /\A\d{3}-\d{4}\z/ }
     validates :ken_name_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :city_name
     validates :address
-    validates :tel, numericality: { with: /^0[0-9]{9,10}$/ }
+    validates :tel, numericality: {only_integer: true, length: {minimum: 10} , with: /^0[0-9]{9,10}$/ }
     validates :user_id
     validates :item_id
-    validates :token
   end
 
   def save
