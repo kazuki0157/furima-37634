@@ -7,15 +7,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    #binding.pry
     @order_shipping_info = OrderShippingInfo.new(order_params)
     if @order_shipping_info.valid?
       pay_item
-      @order_shipping_info.save
       redirect_to root_path
     else
-      #binding.pry
-      redirect_to action: :index
+      @item = Item.find(params[:item_id])
+      render :index
     end
   end
 
