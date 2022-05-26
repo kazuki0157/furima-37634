@@ -75,7 +75,7 @@
 | address         | string     | null: false                    |
 | building        | string     |                                |
 | tel             | string     | null: false                    |
-| purchase_record | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 
 ### Association
 
