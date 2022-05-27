@@ -1,10 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :order_params, only: :create
   before_action :set_item, only: [:index, :create]
 
   def index
-    set_item
     @order_shipping_info = OrderShippingInfo.new
 
     redirect_to root_path if current_user.id == @item.user_id || Order.exists?(item_id: @item.id)
@@ -17,7 +15,6 @@ class OrdersController < ApplicationController
       @order_shipping_info.save
       redirect_to root_path
     else
-      set_item
       render :index
     end
   end
